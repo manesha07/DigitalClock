@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Digital Clock</title>
+</head>
+<script type="text/javascript">
+	function time()
+	{
+		var today = new Date();
+		var hr = today.getHours();
+		var min =today.getMinutes();
+		var sec = today.getSeconds();
+		hr =checktime(hr);
+		min =checktime(min);
+		sec =checktime(sec);
+		AM_PM ="AM";
+
+		if(hr >12)
+		{
+			hr -=12;
+			AM_PM ="PM";
+    	}
+
+    	if(hr == 0)
+    	{
+    		hr=12;
+    		AM_PM="AM";
+    	}
+
+		document.getElementById('clock').innerHTML= hr + ":" + min + ":" +sec;
+		setTimeout(time,500);
+
+	}
+
+	function checktime(i)
+	{
+		if(i<10)
+		{
+			i="0"+ i;
+		}
+		return i;
+	}
+</script>
+<style type="text/css">
+	#clock
+	{   
+		margin: auto;
+		font-size: 100px;
+		display: inline-block;
+		border:2px solid blue;
+		background-color: black;
+		color: white;
+		margin-top: 20%;
+
+
+	}
+</style>
+<body onload = "time()">
+	<center><div id ="clock"></div></center>
+
+</body>
+</html>
